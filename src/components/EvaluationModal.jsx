@@ -9,28 +9,22 @@ const EvaluationModal = forwardRef(({ data, characterName }, ref) => {
     <dialog ref={ref} className="evaluation-modal">
       <div className="modal-content">
         <h2>Évaluation soumise</h2>
-        <p className="modal-character">
-          Personnage: <strong>{characterName}</strong>
-        </p>
+        <p>Merci pour votre évaluation de {characterName}</p>
 
-        <div className="modal-data">
-          <div className="data-item">
-            <span className="data-label">Évaluateur:</span>
-            <span className="data-value">{data.evaluatorName}</span>
-          </div>
-          <div className="data-item">
-            <span className="data-label">Email:</span>
-            <span className="data-value">{data.email}</span>
-          </div>
-          <div className="data-item">
-            <span className="data-label">Note:</span>
-            <span className="data-value rating">{data.rating} ⭐</span>
-          </div>
+        <div className="modal-summary">
+          <p>
+            <strong>Nom:</strong> {data.evaluatorName}
+          </p>
+          <p>
+            <strong>Email:</strong> {data.email}
+          </p>
+          <p>
+            <strong>Note:</strong> {data.rating}/5
+          </p>
           {data.comment && (
-            <div className="data-item">
-              <span className="data-label">Commentaire:</span>
-              <p className="data-value comment">{data.comment}</p>
-            </div>
+            <p>
+              <strong>Commentaire:</strong> {data.comment}
+            </p>
           )}
         </div>
 
