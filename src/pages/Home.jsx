@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import CharacterGrid from "../components/CharacterGrid";
 import "../styles/Home.css";
 
@@ -6,17 +6,17 @@ export default function Home() {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [prevUrl, setPrevUrl] = useState(null);
   const [nextUrl, setNextUrl] = useState(
     "https://rickandmortyapi.com/api/character",
   );
-  const gridRef = useRef(null);
 
-  // Initial load + hero character
+  // Initial load
   useEffect(() => {
-    fetchCharacters(nextUrl, true);
+    fetchCharacters("https://rickandmortyapi.com/api/character");
   }, []);
 
-  const fetchCharacters = async (url, isInitial = false) => {
+  const fetchCharacters = async (url) => {
     try {
       setLoading(true);
       setError(null);
@@ -24,13 +24,9 @@ export default function Home() {
       if (!response.ok) throw new Error("Erreur API");
       const data = await response.json();
 
-      if (isInitial) {
-        setCharacters(data.results);
-      } else {
-        setCharacters((prev) => [...prev, ...data.results]);
-      }
-
+      setCharacters(data.results);
       setNextUrl(data.info.next || null);
+      setPrevUrl(data.info.prev || null);
     } catch (err) {
       setError("Une erreur est survenue. Réessayez.");
       console.error(err);
@@ -39,32 +35,37 @@ export default function Home() {
     }
   };
 
-  // Infinite scroll detector
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && nextUrl && !loading) {
-          fetchCharacters(nextUrl);
-        }
-      },
-      { threshold: 0.1 },
-    );
+  const handleNext = () => {
+    if (nextUrl) fetchCharacters(nextUrl);
+  };
 
-    if (gridRef.current) observer.observe(gridRef.current);
-    return () => observer.disconnect();
-  }, [nextUrl, loading]);
+  const handlePrev = () => {
+    if (prevUrl) fetchCharacters(prevUrl);
+  };
 
   return (
     <div className="home">
       <section className="grid-section">
         <h2>Personnages de l'univers</h2>
         {error && <div className="error-message">{error}</div>}
-        <CharacterGrid characters={characters} />
-        <div ref={gridRef} className="load-more-trigger">
-          {loading && <p className="loading">Chargement…</p>}
-          {!nextUrl && characters.length > 0 && (
-            <p className="end-message">Fin de la liste</p>
-          )}
+        {loading && <p className="loading">Chargement…</p>}
+        {!loading && <CharacterGrid characters={characters} />}
+
+        <div className="pagination-buttons">
+          <button
+            className="btn-pagination"
+            onClick={handlePrev}
+            disabled={!prevUrl || loading}
+          >
+            ← Précédent
+          </button>
+          <button
+            className="btn-pagination"
+            onClick={handleNext}
+            disabled={!nextUrl || loading}
+          >
+            Suivant →
+          </button>
         </div>
       </section>
     </div>
