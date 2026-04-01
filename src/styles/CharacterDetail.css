@@ -1,0 +1,326 @@
+/* === CHARACTER DETAIL PAGE === */
+.detail-page {
+  min-height: 100vh;
+  background: #0a0e27;
+  color: #fff;
+  padding: 2rem;
+}
+
+/* === BACK BUTTON === */
+.back-btn {
+  background: transparent;
+  border: 2px solid #00ff88;
+  color: #00ff88;
+  padding: 0.7rem 1.5rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.back-btn:hover {
+  background: rgba(0, 255, 136, 0.2);
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+}
+
+/* === HERO DETAIL === */
+.detail-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  padding: 2rem;
+  border-radius: 16px;
+  align-items: center;
+}
+
+.detail-image {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  border: 2px solid #00ff88;
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+}
+
+.detail-info h1 {
+  font-size: 3rem;
+  margin: 0 0 2rem 0;
+  background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* === INFO GRID === */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.info-item {
+  background: rgba(0, 255, 136, 0.05);
+  border-left: 3px solid #00ff88;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.info-item .label {
+  display: block;
+  font-size: 0.85rem;
+  color: #00ff88;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.info-item .value {
+  display: block;
+  font-size: 1.1rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+/* === EVALUATION SECTION === */
+.evaluation-section {
+  max-width: 600px;
+  margin: 3rem auto 0;
+  background: rgba(10, 14, 39, 0.5);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  padding: 2.5rem;
+  border-radius: 16px;
+}
+
+.evaluation-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* === FORM STYLES === */
+.evaluation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #00ff88;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  color: #fff;
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #00ff88;
+  box-shadow:
+    0 0 15px rgba(0, 255, 136, 0.3),
+    inset 0 0 10px rgba(0, 255, 136, 0.1);
+}
+
+.form-group input.input-error,
+.form-group select.input-error,
+.form-group textarea.input-error {
+  border-color: #ff0088;
+  background: rgba(255, 0, 136, 0.08);
+}
+
+.error-text {
+  color: #ff6db3;
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+  font-weight: 500;
+}
+
+.char-count {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 0.3rem;
+}
+
+/* === SUBMIT BUTTON === */
+.submit-btn {
+  background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+  color: #0a0e27;
+  border: none;
+  padding: 1rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+  margin-top: 0.5rem;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.8);
+}
+
+/* === MODAL STYLES === */
+.evaluation-modal {
+  background: rgba(10, 14, 39, 0.95);
+  border: 2px solid #00ff88;
+  border-radius: 16px;
+  padding: 0;
+  max-width: 500px;
+  box-shadow: 0 0 50px rgba(0, 255, 136, 0.4);
+  backdrop-filter: blur(10px);
+}
+
+.evaluation-modal::backdrop {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  padding: 2.5rem;
+  color: #fff;
+}
+
+.modal-content h2 {
+  margin: 0 0 1.5rem 0;
+  background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 1.8rem;
+}
+
+.modal-character {
+  font-size: 1rem;
+  color: #aaa;
+  margin-bottom: 1.5rem;
+}
+
+.modal-character strong {
+  color: #00ff88;
+}
+
+.modal-data {
+  background: rgba(0, 255, 136, 0.05);
+  border-left: 3px solid #00d4ff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.data-item {
+  margin-bottom: 1rem;
+}
+
+.data-item:last-child {
+  margin-bottom: 0;
+}
+
+.data-label {
+  display: block;
+  font-size: 0.85rem;
+  color: #00ff88;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.data-value {
+  display: block;
+  color: #fff;
+  font-size: 1rem;
+  word-break: break-word;
+}
+
+.data-value.rating {
+  font-weight: 700;
+  color: #00d4ff;
+}
+
+.data-value.comment {
+  font-style: italic;
+  line-height: 1.6;
+  margin-top: 0.5rem;
+}
+
+.modal-close-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+  color: #0a0e27;
+  border: none;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+}
+
+.modal-close-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.8);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .detail-hero {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .detail-info h1 {
+    font-size: 2rem;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .evaluation-section {
+    padding: 1.5rem;
+  }
+
+  .detail-page {
+    padding: 1rem;
+  }
+}
